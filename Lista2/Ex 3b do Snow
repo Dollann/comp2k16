@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+	int soma = 0;
+
+int fu(int N){			// comeÃ§o da funÃ§ao para calcular os n numeros primos
+	int i = 1, j = 2, soma = 0;
+	int Vet[N];			// vetor que vai quarda os numeos primos para somalos
+	int x = 3; 			// o numeors primos vao comeÃ§ar no 3 ao inves do 0 pois o 2 ja e primo e ja foi colocado no vetor
+
+		for(i = 0; i < N; i++){ 		// igualar todas as posiÃ§oes do vetor a 0
+			Vet[i] = 0;
+		}
+		
+		Vet[0] = 2;			// primeira posiÃ§ao do vetor vai ser 2, colocar ele no codigo para faciliar o codigo dos numeros primos 
+	
+		while (Vet[N - 1] == 0){			// while para continuar enquanto a ultima posiÃ§ao do vetor (que Ã© a N -1 pois o vetor comeÃ§a no 0) for 0
+
+			for(i = 1;i < N ; i++){			// FOR para prencher o vetor 
+					
+				while (Vet[i] == 0){			// o while vai garantir que todo o vetor seja prenchido por primos diferentes
+
+					for(j = 2; j < x; j++) {			// FOR para achar os numeors primos
+						if(x%j == 0){
+							break;			// O break serve para parar o for no caso do numero nao ser primo0
+						}
+						else{
+							Vet[i] = x; 		// e se ele for primo ele sera adicionado no vetor na posiÃ§ao i;
+						}
+					}
+						
+					x++;		// o while sÃ³ para quando a posiÃ§ao comparada tiver um numero e o x muda sempre para sempre comparar com outro numero
+				}
+			}
+		}												
+			  
+		soma = soma + Vet[0]; 		// atribuindo o valor da primeira posiçao do vetor na soma 
+			
+		for(i = 1; i < N; i++){			// somando os numeros do vetor
+			soma = soma + Vet[i];
+		}
+
+		printf("A soma dos numeros eh:%i\n",soma);
+}
+
+int main(){
+	int N;
+	
+		printf("Digite a quantidade de numeros primos a serem somados:");
+		scanf("%i",&N);
+	
+
+		fu(N);	
+	
+	system("pause");
+	return 0;
+	
+}
